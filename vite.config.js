@@ -11,6 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
+  base: '/portfolio/',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] }),
@@ -31,7 +32,7 @@ export default defineConfig({
           });
 
         generateSitemap({
-          hostname: 'https://MohamedSamir1919.github.io/portfolio',
+          hostname: 'https://mohamedsamir1919.github.io/portfolio',
           // Note: GitHub Pages usually expects files in 'dist', 
           // but I'll keep 'static' as per your build config.
           outDir: path.resolve(__dirname, 'static'), 
