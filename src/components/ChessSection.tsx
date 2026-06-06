@@ -15,8 +15,8 @@ interface PieceProps {
 }
 
 function ChessPiece({ type, isWhite, isSelected, position, onClick }: PieceProps) {
-  const baseColor = isWhite ? "#ffffff" : "#0a0a0c";
-  const glowColor = "#2563eb"; // Premium Electric Blue Accent
+  const baseColor = isWhite ? "#ffffff" : "#0b1220"; // darker navy tint for better contrast
+  const glowColor = "#60a5fa"; // Premium Electric Blue Accent
   
   // Luxury physical material maps
   const roughness = isWhite ? 0.05 : 0.3;
@@ -27,29 +27,31 @@ function ChessPiece({ type, isWhite, isSelected, position, onClick }: PieceProps
       {/* Universal Architectural Pedestal Base */}
       <mesh castShadow position={[0, 0.06, 0]}>
         <cylinderGeometry args={[0.34, 0.36, 0.12, 4]} /> {/* 4-sided chiseled base */}
-        <meshStandardMaterial 
-          color={isSelected ? glowColor : baseColor} 
-          roughness={roughness} 
-          metalness={metalness} 
+        <meshStandardMaterial
+          color={isSelected ? glowColor : baseColor}
+          roughness={roughness}
+          metalness={metalness}
+          emissive={!isWhite ? '#07133a' : undefined}
+          emissiveIntensity={!isWhite ? 0.06 : undefined}
         />
         {/* Subtle high-end wireframe accent line */}
-        <Edges scale={1.01} threshold={15} color={isSelected ? "#60a5fa" : isWhite ? "#cbd5e1" : "#1e293b"} />
+        <Edges scale={1.01} threshold={15} color={isSelected ? "#60a5fa" : isWhite ? "#cbd5e1" : "#94a3b8"} />
       </mesh>
 
       {/* --- DESIGNER ABSTRACT FORMS --- */}
       {type === "pawn" && (
         <mesh castShadow position={[0, 0.35, 0]}>
           <coneGeometry args={[0.18, 0.5, 4]} />
-          <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} />
-          <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#1e293b"} />
+          <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} emissive={!isWhite ? '#07133a' : undefined} emissiveIntensity={!isWhite ? 0.06 : undefined} />
+            <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#94a3b8"} />
         </mesh>
       )}
 
       {type === "rook" && (
         <mesh castShadow position={[0, 0.45, 0]}>
           <boxGeometry args={[0.36, 0.65, 0.36]} />
-          <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} />
-          <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#1e293b"} />
+          <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} emissive={!isWhite ? '#07133a' : undefined} emissiveIntensity={!isWhite ? 0.06 : undefined} />
+          <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#94a3b8"} />
         </mesh>
       )}
 
@@ -58,8 +60,8 @@ function ChessPiece({ type, isWhite, isSelected, position, onClick }: PieceProps
           {/* Asymmetric chiseled monolith */}
           <mesh castShadow rotation={[0, 0, 0.2]}>
             <boxGeometry args={[0.22, 0.6, 0.34]} />
-            <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} />
-            <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#1e293b"} />
+            <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} emissive={!isWhite ? '#07133a' : undefined} emissiveIntensity={!isWhite ? 0.06 : undefined} />
+            <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#94a3b8"} />
           </mesh>
         </group>
       )}
@@ -77,8 +79,8 @@ function ChessPiece({ type, isWhite, isSelected, position, onClick }: PieceProps
           {/* Slender, multi-faceted fluted pillar */}
           <mesh castShadow>
             <cylinderGeometry args={[0.24, 0.16, 0.8, 8]} />
-            <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} />
-            <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#1e293b"} />
+            <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} emissive={!isWhite ? '#07133a' : undefined} emissiveIntensity={!isWhite ? 0.06 : undefined} />
+            <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#94a3b8"} />
           </mesh>
           <mesh position={[0, 0.46, 0]}>
             <sphereGeometry args={[0.06, 8, 8]} />
@@ -92,8 +94,8 @@ function ChessPiece({ type, isWhite, isSelected, position, onClick }: PieceProps
           {/* Stately interlocking monolith architecture */}
           <mesh castShadow>
             <boxGeometry args={[0.32, 0.9, 0.32]} />
-            <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} />
-            <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#1e293b"} />
+            <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} emissive={!isWhite ? '#07133a' : undefined} emissiveIntensity={!isWhite ? 0.06 : undefined} />
+            <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#94a3b8"} />
           </mesh>
           {/* Minimalist Crown Finial */}
           <mesh position={[0, 0.5, 0]}>
@@ -602,7 +604,7 @@ export default function ChessSection() {
       </div>
 
       {/* The 3D Viewport Node */}
-      <div className="lg:col-span-7 w-full h-[580px] z-10 bg-gradient-to-br from-gray-800 to-gray-600  border border-zinc-900 rounded-sm overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+      <div className="lg:col-span-7 w-full h-[580px] z-10 bg-gradient-to-br from-gray-900 to-black border border-zinc-900 rounded-sm overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.8)]">
        <Canvas
           camera={{ position: isMobile ? [0, 10, 18] : [0, 7, 10], fov: isMobile ? 48 : 42 }}
           shadows={{ type: THREE.PCFShadowMap }} // Fixed the deprecation warning too!
