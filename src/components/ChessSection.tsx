@@ -349,7 +349,7 @@ export default function ChessSection() {
         const title = 'Hello there,';
         const subtitle = 'be in touch';
         const body = winner === 'white'
-          ? 'Some enter to send message on WhatsApp app for number 01026457619.'
+          ? 'Just know the king is the most important piece, but the queen is the most powerful one, so I am happy for somebody like you on my portfolio!'
           : `♔ Checkmate! ${winner.toUpperCase()} wins!`;
         setMessage(body);
         setGameOver({ over: true, winner });
@@ -501,15 +501,18 @@ export default function ChessSection() {
       <div className="lg:col-span-5 space-y-6">
         <div className="inline-flex items-center gap-2 px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-black bg-white border border-zinc-800 rounded-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-          Interactive System Matrix
+          Just simple chess Game
         </div>
-        <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-none text-zinc-100">
-          State Mutations <br />
-          <span className="font-semibold text-black">As Architectural Logic</span>
+        <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-none text-black">
+          Portfolio<br />
+          <span className="font-semibold text-black">Mohamed Samir</span>
         </h2>
         <p className="text-black text-sm leading-relaxed max-w-sm font-light">
-          This workspace redefines standard 3D visuals. By dropping heavy textures in favor of clean mathematical columns and high-contrast ambient lighting, the scene operates as a fast, premium software demonstration.
-        </p>
+          I am just someone who try to build his own bussiness,
+           and I am happy for somebody like you on my portfolio!
+            it's simple chess game in three.js,
+           I am not designer, I am a developer<br />
+           </p>
         
         {/* Minimalist interactive legend */}
         <div className="pt-4 border-t border-zinc-900 space-y-2 text-[11px] font-mono text-black">
