@@ -17,7 +17,7 @@ interface PieceProps {
 function ChessPiece({ type, isWhite, isSelected, position, onClick }: PieceProps) {
   const baseColor = isWhite ? "#ffffff" : "#0b1220"; // darker navy tint for better contrast
   const glowColor = "#60a5fa"; // Premium Electric Blue Accent
-  
+
   // Luxury physical material maps
   const roughness = isWhite ? 0.05 : 0.3;
   const metalness = isWhite ? 0.95 : 0.1;
@@ -43,7 +43,7 @@ function ChessPiece({ type, isWhite, isSelected, position, onClick }: PieceProps
         <mesh castShadow position={[0, 0.35, 0]}>
           <coneGeometry args={[0.18, 0.5, 4]} />
           <meshStandardMaterial color={isSelected ? glowColor : baseColor} roughness={roughness} metalness={metalness} emissive={!isWhite ? '#07133a' : undefined} emissiveIntensity={!isWhite ? 0.06 : undefined} />
-            <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#94a3b8"} />
+          <Edges scale={1.01} color={isWhite ? "#cbd5e1" : "#94a3b8"} />
         </mesh>
       )}
 
@@ -126,18 +126,18 @@ const buildInitialBoardState = (): PieceInstance[] => {
     { id: "b-r1", type: "rook", isWhite: false, x: 0, z: 0, hasMoved: false },
     { id: "b-n1", type: "knight", isWhite: false, x: 1, z: 0, hasMoved: false },
     { id: "b-b1", type: "bishop", isWhite: false, x: 2, z: 0, hasMoved: false },
-    { id: "b-q",  type: "queen", isWhite: false, x: 3, z: 0, hasMoved: false },
-    { id: "b-k",  type: "king", isWhite: false, x: 4, z: 0, hasMoved: false },
+    { id: "b-q", type: "queen", isWhite: false, x: 3, z: 0, hasMoved: false },
+    { id: "b-k", type: "king", isWhite: false, x: 4, z: 0, hasMoved: false },
     { id: "b-b2", type: "bishop", isWhite: false, x: 5, z: 0, hasMoved: false },
     { id: "b-n2", type: "knight", isWhite: false, x: 6, z: 0, hasMoved: false },
     { id: "b-r2", type: "rook", isWhite: false, x: 7, z: 0, hasMoved: false },
-    
+
     // White Base Matrix (z = 7)
     { id: "w-r1", type: "rook", isWhite: true, x: 0, z: 7, hasMoved: false },
     { id: "w-n1", type: "knight", isWhite: true, x: 1, z: 7, hasMoved: false },
     { id: "w-b1", type: "bishop", isWhite: true, x: 2, z: 7, hasMoved: false },
-    { id: "w-q",  type: "queen", isWhite: true, x: 3, z: 7, hasMoved: false },
-    { id: "w-k",  type: "king", isWhite: true, x: 4, z: 7, hasMoved: false },
+    { id: "w-q", type: "queen", isWhite: true, x: 3, z: 7, hasMoved: false },
+    { id: "w-k", type: "king", isWhite: true, x: 4, z: 7, hasMoved: false },
     { id: "w-b2", type: "bishop", isWhite: true, x: 5, z: 7, hasMoved: false },
     { id: "w-n2", type: "knight", isWhite: true, x: 6, z: 7, hasMoved: false },
     { id: "w-r2", type: "rook", isWhite: true, x: 7, z: 7, hasMoved: false },
@@ -200,7 +200,7 @@ export default function ChessSection() {
       }
       return true;
     };
-    
+
     // bounds
     if (tx < 0 || tx > 7 || tz < 0 || tz > 7) return false;
     if (tx === piece.x && tz === piece.z) return false;
@@ -351,7 +351,7 @@ export default function ChessSection() {
         const title = 'Hello there,';
         const subtitle = 'be in touch';
         const body = winner === 'white'
-          ? 'Just know the king is the most important piece, but the queen is the most powerful one, so I am happy for somebody like you on my portfolio!'
+          ? 'Just know the king is the most important piece, but the queen is the most powerful one, so I am happy for somebody like you on my portfolio! you can see some project https://mohamedsamir1919.github.io/mosasha'
           : `♔ Checkmate! ${winner.toUpperCase()} wins!`;
         setMessage(body);
         setGameOver({ over: true, winner });
@@ -380,7 +380,7 @@ export default function ChessSection() {
       const randomIdx = Math.floor(Math.random() * blackPieces.length);
       const piece = blackPieces[randomIdx];
       const moves = getLegalMovesForPiece(piece, boardPieces);
-      
+
       if (moves.length > 0) {
         const [tx, tz] = moves[Math.floor(Math.random() * moves.length)];
         const newBoard = applyMove(piece, tx, tz, boardPieces);
@@ -401,7 +401,7 @@ export default function ChessSection() {
   // Auto-move black after white moves
   useEffect(() => {
     let isMounted = true;
-    
+
     if (turn === 'black' && !gameOver.over) {
       const timer = setTimeout(() => {
         if (isMounted) {
@@ -412,7 +412,7 @@ export default function ChessSection() {
             const randomIdx = Math.floor(Math.random() * blackPieces.length);
             const piece = blackPieces[randomIdx];
             const moves = getLegalMovesForPiece(piece, pieces);
-            
+
             if (moves.length > 0) {
               const [tx, tz] = moves[Math.floor(Math.random() * moves.length)];
               const newBoard = applyMove(piece, tx, tz, pieces);
@@ -430,14 +430,14 @@ export default function ChessSection() {
               blackPieces.splice(randomIdx, 1);
             }
           }
-          
+
           // If no legal moves found, check for checkmate/stalemate
           if (!legalMoveFound) {
             checkGameEnd(pieces, 'black');
           }
         }
       }, 1000);
-      
+
       return () => {
         isMounted = false;
         clearTimeout(timer);
@@ -487,7 +487,7 @@ export default function ChessSection() {
     const newBoard = applyMove(piece, targetX, targetZ, pieces);
     setPieces(newBoard);
     setSelectedId(null);
-    
+
     // Check if game ends after white moves
     const newTurn = 'black';
     setTimeout(() => {
@@ -511,29 +511,28 @@ export default function ChessSection() {
         </h2>
         <p className="text-black text-sm leading-relaxed max-w-sm font-light">
           I am just someone who try to build his own bussiness,
-           and I am happy for somebody like you on my portfolio!
-            it's simple chess game in three.js,
-           I am not designer, I am a developer<br />
-           </p>
-        
+          and I am happy for somebody like you on my portfolio!
+          it's simple chess game in three.js,
+          I am not designer, I am a developer<br />
+        </p>
+
         {/* Minimalist interactive legend */}
         <div className="pt-4 border-t border-zinc-900 space-y-2 text-[11px] font-mono text-black">
           <p>• <span className="text-black">SELECT:</span> Click a chiseled column node.</p>
           <p>• <span className="text-black">MUTATE:</span> Click an empty monolithic tile grid.</p>
           <p>• <span className="text-black">PERSPECTIVE:</span> Drag canvas to control orbital axis.</p>
         </div>
-        
+
         {/* Black's Move Message / Game Over */}
         {(message || gameOver.over) && (
-          <div className={`mt-4 p-3 border rounded text-sm font-mono ${
-            gameOver.over
+          <div className={`mt-4 p-3 border rounded text-sm font-mono ${gameOver.over
               ? 'bg-red-100 border-red-300 text-red-800'
               : 'bg-blue-100 border-blue-300 text-black'
-          }`}>
+            }`}>
             {gameOver.over ? message : isThinking ? '🤔 Black is thinking...' : message}
           </div>
         )}
-        
+
         {/* Reset Game Button */}
         {gameOver.over && (
           <button
@@ -605,21 +604,21 @@ export default function ChessSection() {
 
       {/* The 3D Viewport Node */}
       <div className="lg:col-span-7 w-full h-[580px] z-10 bg-gradient-to-br from-gray-900 to-black border border-zinc-900 rounded-sm overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.8)]">
-       <Canvas
+        <Canvas
           camera={{ position: isMobile ? [0, 10, 18] : [0, 7, 10], fov: isMobile ? 48 : 42 }}
           shadows={{ type: THREE.PCFShadowMap }} // Fixed the deprecation warning too!
         >
           {/* Muted luxury studio illumination */}
           <ambientLight intensity={0.15} />
-          
+
           {/* Main directional sun creating sharp contrasts */}
-          <directionalLight 
-            position={[8, 16, 5]} 
-            intensity={2.2} 
-            castShadow 
+          <directionalLight
+            position={[8, 16, 5]}
+            intensity={2.2}
+            castShadow
             shadow-mapSize={[2048, 2048]}
           />
-          
+
           {/* Cybernetic accent back-glow light source */}
           <pointLight position={[-6, 2, -6]} intensity={1.5} color="#1d4ed8" />
           <pointLight position={[0, 4, 0]} intensity={0.4} color="#60a5fa" />
@@ -630,15 +629,15 @@ export default function ChessSection() {
               Array.from({ length: 8 }).map((_, z) => {
                 const isDarkSquare = (x + z) % 2 === 1;
                 return (
-                  <mesh 
-                    key={`${x}-${z}`} 
-                    position={[x - 3.5, 0, z - 3.5]} 
+                  <mesh
+                    key={`${x}-${z}`}
+                    position={[x - 3.5, 0, z - 3.5]}
                     receiveShadow
                     onClick={() => handleGridSquareClick(x, z)}
                   >
                     <boxGeometry args={[0.96, 0.16, 0.96]} />
-                    <meshStandardMaterial 
-                      color={isDarkSquare ? "#09090b" : "#f4f4f5"} 
+                    <meshStandardMaterial
+                      color={isDarkSquare ? "#09090b" : "#f4f4f5"}
                       roughness={0.1}
                       metalness={isDarkSquare ? 0.0 : 0.8}
                     />

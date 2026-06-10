@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar'
 import ChessSection from '../components/ChessSection';
+import StimationSection from '../components/StimationSection';
 function King({ position, isWhite ,onClick}) {
   const texture = useTexture("https://mohamedsamir1919.github.io/portfolio/Linear_Gradient.png")
 
@@ -245,7 +246,7 @@ const [isMobile, setIsMobile] = useState()
      
 
 <ChessSection pieces={pieces} className="z-[10]" onSelectPiece={handleSelectPiece} onGridSquareClick={handleGridSquareClick} />
-
+    {/* <StimationSection className="z-[10]" /> */}
      
     </div>
   );
