@@ -351,7 +351,7 @@ export default function ChessSection() {
         const title = 'Hello there,';
         const subtitle = 'be in touch';
         const body = winner === 'white'
-          ? 'Just know the king is the most important piece, but the queen is the most powerful one, so I am happy for somebody like you on my portfolio! you can see some project https://mohamedsamir1919.github.io/mosasha'
+          ? 'Just know the king is the most important piece, but the queen is the most powerful one, so I am happy for somebody like you on my portfolio! you can see some project https://mohamedsamir1919.github.io/first-auto'
           : `♔ Checkmate! ${winner.toUpperCase()} wins!`;
         setMessage(body);
         setGameOver({ over: true, winner });
@@ -526,8 +526,8 @@ export default function ChessSection() {
         {/* Black's Move Message / Game Over */}
         {(message || gameOver.over) && (
           <div className={`mt-4 p-3 border rounded text-sm font-mono ${gameOver.over
-              ? 'bg-red-100 border-red-300 text-red-800'
-              : 'bg-blue-100 border-blue-300 text-black'
+            ? 'bg-red-100 border-red-300 text-red-800'
+            : 'bg-blue-100 border-blue-300 text-black'
             }`}>
             {gameOver.over ? message : isThinking ? '🤔 Black is thinking...' : message}
           </div>
@@ -576,7 +576,7 @@ export default function ChessSection() {
                   Send WhatsApp
                 </a>
                 <a
-                  href="https://mohamedsamir1919.github.io/portfolio/Mohamed_samir_cv.pdf"
+                  href="https://mohamedsamir1919.github.io/portfolio/Mohamed_Samir_CV.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-2xl bg-slate-700 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-600"
